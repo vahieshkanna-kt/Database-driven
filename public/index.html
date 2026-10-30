@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudentHub | Student Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">S</span> StudentHub</a>
+    <span class="top-note">DATABASE MANAGEMENT</span>
+  </header>
+
+  <main class="container">
+    <section class="intro">
+      <div>
+        <p class="eyebrow">STUDENT DIRECTORY</p>
+        <h1>Manage your students<span>.</span></h1>
+        <p class="subtitle">Add, view, update and remove student records in one place.</p>
+      </div>
+      <div class="intro-icon" aria-hidden="true">✦</div>
+    </section>
+
+    <section class="stats">
+      <article class="stat-card">
+        <div class="stat-icon purple">▤</div>
+        <div><p>Total students</p><strong id="totalCount">0</strong></div>
+      </article>
+      <article class="stat-card">
+        <div class="stat-icon green">✓</div>
+        <div><p>Departments</p><strong id="departmentCount">0</strong></div>
+      </article>
+    </section>
+
+    <section class="workspace">
+      <article class="panel form-panel">
+        <div class="panel-heading">
+          <div><p class="eyebrow">STUDENT DETAILS</p><h2 id="formTitle">Add a student</h2></div>
+          <span class="step-badge" id="formBadge">NEW</span>
+        </div>
+        <form id="studentForm">
+          <label for="name">Full name</label>
+          <input id="name" name="name" type="text" placeholder="e.g. Arun Kumar" minlength="2" maxlength="80" required>
+
+          <label for="email">Email address</label>
+          <input id="email" name="email" type="email" placeholder="student@example.com" required>
+
+          <label for="department">Department</label>
+          <select id="department" name="department" required>
+            <option value="">Choose department</option>
+            <option>Information Technology</option>
+            <option>Computer Science</option>
+            <option>Electronics and Communication</option>
+            <option>Mechanical Engineering</option>
+            <option>Electrical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Other</option>
+          </select>
+
+          <label for="year">Study year</label>
+          <select id="year" name="year" required>
+            <option value="">Choose year</option>
+            <option value="1">1st Year</option>
+            <option value="2">2nd Year</option>
+            <option value="3">3rd Year</option>
+            <option value="4">4th Year</option>
+            <option value="5">5th Year</option>
+          </select>
+
+          <p id="formMessage" class="form-message" role="status"></p>
+          <div class="form-actions">
+            <button class="btn primary" id="submitButton" type="submit">＋ Add student</button>
+            <button class="btn secondary hidden" id="cancelButton" type="button">Cancel</button>
+          </div>
+        </form>
+      </article>
+
+      <article class="panel list-panel">
+        <div class="list-heading">
+          <div><p class="eyebrow">RECORDS</p><h2>All students</h2></div>
+          <button class="btn refresh" id="refreshButton" type="button" title="Refresh records">↻ Refresh</button>
+        </div>
+        <div class="search-wrap"><span>⌕</span><input id="searchInput" type="search" placeholder="Search name, email or department..." aria-label="Search students"></div>
+        <div id="loading" class="empty-state">Loading student records…</div>
+        <div class="table-wrap hidden" id="tableWrap">
+          <table>
+            <thead><tr><th>STUDENT</th><th>DEPARTMENT</th><th>YEAR</th><th>ACTIONS</th></tr></thead>
+            <tbody id="studentTable"></tbody>
+          </table>
+        </div>
+        <div id="emptyState" class="empty-state hidden">
+          <div class="empty-icon">▤</div><strong>No student records yet</strong><p>Add your first student using the form.</p>
+        </div>
+        <p class="list-foot" id="listFoot">Data is stored in your MongoDB database.</p>
+      </article>
+    </section>
+    <footer>StudentHub <span>•</span> Task 4: Database-Driven Web Application</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
